@@ -22,12 +22,27 @@ class Node {
     this.right = yourRight;
   }
 
-  findLargestChild() {
-    let largest = this.value;
-    if ((this.left.value > this.value) || (this.right.value > this.value)) {
-      largest = Math.max(this.left.value,this.right.value)
+  findLargestChild(largest,nextlargest) {
+    if (this.left != null) {
+      if (this.left.value > largest) {
+        nextlargest = largest;
+        largest = this.left.value;
+      }
     }
-    return largest
+    if (this.right != null) {
+      if (this.left.right > largest) {
+        nextlargest = largest;
+        largest = this.right.value;
+      }
+    }
+    console.log(this.value, ' / ',largest,' / ',nextlargest)
+    if (this.left != null) {
+      this.left.findLargestChild(largest,nextlargest)
+    }
+    if (this.right != null) {
+      this.right.findLargestChild(largest,nextlargest)
+    }
+    return largest,nextlargest;
   }
 }
 
