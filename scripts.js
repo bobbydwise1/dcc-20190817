@@ -21,6 +21,14 @@ class Node {
   addRight(yourRight) {
     this.right = yourRight;
   }
+
+  findLargestChild() {
+    let largest = this.value;
+    if ((this.left.value > this.value) || (this.right.value > this.value)) {
+      largest = Math.max(this.left.value,this.right.value)
+    }
+    return largest
+  }
 }
 
 let root = new Node(0)
@@ -43,7 +51,7 @@ node2.addRight(node6)
 node3.addLeft(node7)
 node3.addRight(node8)
 node4.addLeft(node9)
-node4.addLeft(node10)
+node4.addRight(node10)
 
 console.log(root)
 
