@@ -21,29 +21,35 @@ class Node {
   addRight(yourRight) {
     this.right = yourRight;
   }
+}
 
-  findLargestChild(largest,nextlargest) {
-    if (this.left != null) {
-      if (this.left.value > largest) {
-        nextlargest = largest;
-        largest = this.left.value;
-      }
+const findLargestChild = (yourNode) => {
+  let largest = yourNode.value;
+  if (yourNode.left != null) {
+    if (yourNode.left.value > largest) {
+      largest = yourNode.left.value;
     }
-    if (this.right != null) {
-      if (this.left.right > largest) {
-        nextlargest = largest;
-        largest = this.right.value;
-      }
-    }
-    console.log(this.value, ' / ',largest,' / ',nextlargest)
-    if (this.left != null) {
-      this.left.findLargestChild(largest,nextlargest)
-    }
-    if (this.right != null) {
-      this.right.findLargestChild(largest,nextlargest)
-    }
-    return largest,nextlargest;
   }
+  console.log("now = ", yourNode.value, ", largest = ", largest)
+  if (yourNode.right != null) {
+    if (yourNode.right.value > largest) {
+      largest = yourNode.right.value;
+    }
+  }
+  console.log("now = ", yourNode.value, ", largest = ", largest)
+  if (yourNode.left != null) {
+    if (findLargestChild(yourNode.left) > largest) {
+      largest = findLargestChild(yourNode.left);
+    }
+  }
+  console.log("now = ", yourNode.value, ", largest = ", largest)
+  if (yourNode.right != null) {
+    if (findLargestChild(yourNode.right) > largest) {
+      largest = findLargestChild(yourNode.right);
+    }
+  }
+  console.log("now = ", yourNode.value, ", largest = ", largest)
+  return largest
 }
 
 let root = new Node(0)
