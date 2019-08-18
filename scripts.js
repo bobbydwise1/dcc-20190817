@@ -30,19 +30,16 @@ const findLargestChild = (yourNode) => {
       largest = yourNode.left.value;
     }
   }
-  console.log("now = ", yourNode.value, ", largest = ", largest)
   if (yourNode.right != null) {
     if (yourNode.right.value > largest) {
       largest = yourNode.right.value;
     }
   }
-  console.log("now = ", yourNode.value, ", largest = ", largest)
   if (yourNode.left != null) {
     if (findLargestChild(yourNode.left) > largest) {
       largest = findLargestChild(yourNode.left);
     }
   }
-  console.log("now = ", yourNode.value, ", largest = ", largest)
   if (yourNode.right != null) {
     if (findLargestChild(yourNode.right) > largest) {
       largest = findLargestChild(yourNode.right);
